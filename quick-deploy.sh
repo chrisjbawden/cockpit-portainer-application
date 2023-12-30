@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Suppress command output
+exec > /dev/null
 
 # Check if the OS is Ubuntu 22 or higher
 if [[$(lsb_release -si) != "Ubuntu" ]]; then
