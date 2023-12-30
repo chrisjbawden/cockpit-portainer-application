@@ -1,20 +1,17 @@
 #!/bin/bash
 
-# Function to display an error message and exit
-function error_exit {
-  echo "$1" >&2
-  exit 1
-}
 
 # Check if the OS is Ubuntu 22 or higher
 if [[ $(lsb_release -si) != "Ubuntu" || $(lsb_release -rs | cut -d. -f1) -lt 22 ]]; then
-  error_exit "This script requires Ubuntu 22 or higher. Aborting."
+  echo "This script requires Ubuntu 22 or higher."
 fi
 
 # Confirm before continuing
 read -p "This script is intended for Ubuntu 22 or higher. Do you want to continue? (y/n): " confirm
 if [[ $confirm != [Yy] ]]; then
-  error_exit "Script aborted."
+  echo "Script aborted."
+  sleep 5
+  exit
 fi
 
 # Define the target directory
@@ -26,14 +23,14 @@ if [[ "$1" == "upgrade" ]]; then
   # Check if the target directory exists
   if [ -d "$target_directory" ]; then
     # Delete existing directory
-    rm -rf "$target_directory" || error_exit "Failed to delete existing directory."
+    rm -rf "$target_directory" || echo "Failed to delete existing directory." ; sleep 5 ; exit
   fi
 fi
 
 # Check if the target directory exists
 if [ -d "$target_directory" ]; then
   # Rename existing directory to 'old'
-  mv "$target_directory" "$target_directory.old" || error_exit "Failed to rename existing directory."
+  mv "$target_directory" "$target_directory.old" || echo "Failed to rename existing directory." ; sleep 5 ; exit
 fi
 
 # Create the target directory
