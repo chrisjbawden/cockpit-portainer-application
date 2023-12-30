@@ -1,0 +1,13 @@
+{
+    "version": 0,
+
+    "menu": {
+        "index": {
+            "label": "Portainer",
+            "path": "index.html",
+            "order": 119
+        }
+    },
+    "content-security-policy": "default-src 'self' https: 'unsafe-inline'; connect-src wss: https: "
+
+}
