@@ -4,22 +4,22 @@
 exec > /dev/null
 
 # Check if the OS is Ubuntu 22 or higher
-if [$(lsb_release -si) != "Ubuntu" ]; then
-echo ""
+if [ "$(lsb_release -si)" != "Ubuntu" ]; then
+  echo ""
   echo "This script was created for Ubuntu"
 fi
 
 # Confirm before continuing
 read -p "This script is intended for Ubuntu - Do you want to continue? (y/n): " confirm
-if [ $confirm != [Yy] ]; then
-echo ""
+if [ "$confirm" != "Y" ] && [ "$confirm" != "y" ]; then
+   echo ""
   echo "Script aborted."
   sleep 5
   exit
 fi
 
 # Check if the upgrade option is provided
-if [ "$1" == "upgrade" ]; then
+if [ "$1" = "upgrade" ]; then
   # Check if the target directory exists
   if [ -d "/usr/share/cockpit/portainer" ]; then
     # Delete existing directory
