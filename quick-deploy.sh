@@ -40,7 +40,7 @@ fi
 #mkdir -p "$target_directory" || error_exit "Failed to create target directory."
 
 # Download the .tar file
-tar_url="https://example.com/path/to/your/file.tar"  # Replace with the actual URL
+tar_url="https://github.com/chrisjbawden/cockpit-portainer-application/releases/download/v1.1-beta/cockpit-portainer-application-1.1-beta.tar"  # Replace with the actual URL
 wget "$tar_url" -O /tmp/portainer-temp.tar || error_exit "Failed to download the tar file."
 
 # Extract the .tar file to the target directory
