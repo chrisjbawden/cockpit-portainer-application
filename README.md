@@ -1,7 +1,6 @@
-# cockpit-portainer-application
-Portainer iframe application for cockpit-project 
+<div style="margin: auto;"># Cockpit Portainer iFrame Add-on</div>div
 
-  <img src="https://github.com/chrisjbawden/cockpit-portainer-application/blob/main/misc/Image%20001%20-%202024010658.png?raw=true" alt="portainer cockput iframe" style="width: 90%;">
+  <img src="https://github.com/chrisjbawden/cockpit-portainer-application/blob/main/misc/Image%20001%20-%202024010658.png?raw=true" alt="portainer cockput iframe" style="width: 90%; margin: auto;">
 
 <br>
 <br>
