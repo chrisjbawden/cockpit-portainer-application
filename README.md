@@ -1,7 +1,7 @@
 # cockpit-portainer-application
 Portainer iframe application for cockpit-project 
 
-  <img src="[path/to/your/image.jpg](https://github.com/chrisjbawden/cockpit-portainer-application/blob/main/misc/Image%20001%20-%202024010658.png?raw=true)" alt="portainer cockput iframe">
+  <img src="https://github.com/chrisjbawden/cockpit-portainer-application/blob/main/misc/Image%20001%20-%202024010658.png?raw=true" alt="portainer cockput iframe" style="width: 90%;">
 
 <br>
 <br>
