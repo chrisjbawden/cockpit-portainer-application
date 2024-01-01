@@ -1,4 +1,4 @@
-<div style="text-align: center; font-weight: bold;"><h1></h2>Cockpit Portainer iFrame Add-on<h1></h2></div>
+<div style="text-align: center; font-weight: bold;">Cockpit Portainer iFrame Add-on</div>
 <br>
 <br>
 <img src="https://github.com/chrisjbawden/cockpit-portainer-application/blob/main/misc/Image%20001%20-%202024010658.png?raw=true" alt="portainer cockput iframe" style="width: 90%; padding-left: 5%;">
