@@ -10,7 +10,7 @@
 <br>
 <br>
 
-Quick install
+<h3>Quick install</h3>
 
 <code>sudo curl -fsSL https://raw.githubusercontent.com/chrisjbawden/cockpit-portainer-application/main/quick-deploy.sh -o quick-deploy.sh | sudo sh quick-deploy.sh</code>
 
@@ -20,5 +20,4 @@ Quick install
 <br>
 <br>
 <h3>Summary:</h3>
-<br>
 This is a simple addon/applicaiton for the cockpit-project which allows you to iframe portainer with the cockpit management user interface. 
