@@ -7,15 +7,16 @@ exec &> /dev/null
 if [ "$(lsb_release -si)" != "Ubuntu" ]; then
   echo ""
   echo "This script was created for Ubuntu"
-fi
-
+  echo ""
+  
 # Confirm before continuing
-read -p "This script is intended for Ubuntu - Do you want to continue? (y/n): " confirm
-if [ "$confirm" != "Y" ] && [ "$confirm" != "y" ]; then
-   echo ""
-  echo "Script aborted."
-  sleep 5
-  exit
+  read -p "This script is intended for Ubuntu - Do you want to continue? (y/n): " confirm
+  if [[ ! "$confirm" =~ ^[Yy]$ ]]; then
+    echo ""
+    echo "Script aborted."
+    sleep 5
+    exit 1
+  fi
 fi
 
 # Check if the upgrade option is provided
