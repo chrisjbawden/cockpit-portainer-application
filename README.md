@@ -1,7 +1,7 @@
-<div style="margin: auto;"><h2></h2>Cockpit Portainer iFrame Add-on<h2></h2></div>
+<div style="margin: 0 auto;"><h2></h2>Cockpit Portainer iFrame Add-on<h2></h2></div>
 <br>
 <br>
-<img src="https://github.com/chrisjbawden/cockpit-portainer-application/blob/main/misc/Image%20001%20-%202024010658.png?raw=true" alt="portainer cockput iframe" style="width: 90%; text-align: center;">
+<img src="https://github.com/chrisjbawden/cockpit-portainer-application/blob/main/misc/Image%20001%20-%202024010658.png?raw=true" alt="portainer cockput iframe" style="width: 90%; margin: 0 auto;">
 
 <br>
 <br>
