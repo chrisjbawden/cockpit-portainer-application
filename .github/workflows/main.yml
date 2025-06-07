@@ -1,0 +1,24 @@
+# .github/workflows/tar-portainer.yml
+name: Auto .tar Portainer directory
+
+on:
+  workflow_dispatch:  # manually triggered from the GitHub UI
+  push:
+    paths:
+      - 'portainer/**'  # run only when portainer directory changes
+
+jobs:
+  tar-job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Create tar of portainer contents
+        run: |
+          tar -cvf portainer.tar -C portainer .
+          mv portainer.tar ./  # Ensure it's placed in root
+
+      - name: List files to confirm
+        run: ls -lh
