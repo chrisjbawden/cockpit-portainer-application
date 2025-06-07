@@ -1,19 +1,56 @@
-// iframe.js
 window.onload = function () {
-    var iframe = document.getElementById("my-iframe");
-    // Get the hostname of the current (parent) window
-    var parentHostname = window.location.hostname; // Get IP Address or Hostname
+    const iframe = document.getElementById("my-iframe");
+    const errorDiv = document.getElementById("error-message");
 
-    var portainerUrl = "https://" + parentHostname + ":9443/";
+    cockpit.spawn(["hostname", "-I"]).stream(function (data) {
+        const hostIP = data.trim().split(' ')[0];
+        const url = "https://" + hostIP + ":9443/";
 
-    iframe.src = portainerUrl;
+        iframe.src = url;
+
+        // Build error message with dynamic link
+        errorDiv.innerHTML = `
+            <div>
+                <strong>Unable to load Portainer.</strong><br><br>
+                This may be due to an untrusted SSL certificate.<br>
+                Please open <a href="${url}" target="_blank">${url}</a> in a new tab,<br>
+                accept the browser security warning, and then refresh this page.
+            </div>
+        `;
+
+        // Try to fetch the endpoint to verify reachability
+        fetch(url, { method: 'HEAD', mode: 'no-cors' })
+            .then(() => {
+                iframe.style.zIndex = 2;
+                errorDiv.style.display = "none";
+            })
+            .catch(() => {
+                iframe.style.zIndex = 0;
+                errorDiv.style.display = "flex";
+            });
+    });
+
+    // Inactivity refresh logic (30 minutes)
+    let refreshTimeout;
+
+    function resetInactivityTimer() {
+        clearTimeout(refreshTimeout);
+        refreshTimeout = setTimeout(() => {
+            console.log("Inactivity detected: refreshing page.");
+            location.reload();
+        }, 30 * 60 * 1000); // 30 minutes
+    }
+
+    // Detect common activity types
+    ["mousemove", "keydown", "mousedown", "touchstart"].forEach(event => {
+        document.addEventListener(event, resetInactivityTimer);
+    });
+
+    // Start the timer initially
+    resetInactivityTimer();
 };
 
 function openSource() {
-    // Retrieve the URL from the iframe
-    var iframe = document.getElementById("my-iframe");
-    var iframeUrl = iframe.src;
-
-    // Open the source URL in a new tab or window
-    window.open(iframeUrl, '_blank');
+    const iframe = document.getElementById("my-iframe");
+    window.open(iframe.src, '_blank');
 }
