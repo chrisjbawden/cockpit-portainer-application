@@ -1,23 +1,33 @@
-# .github/workflows/tar-portainer.yml
 name: Auto .tar Portainer directory
 
 on:
-  workflow_dispatch:  # manually triggered from the GitHub UI
+  workflow_dispatch:
   push:
     paths:
-      - 'portainer/**'  # run only when portainer directory changes
+      - 'portainer/**'
 
 jobs:
   tar-job:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write  # REQUIRED to allow push
 
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+        with:
+          persist-credentials: true  # Required for pushing
 
       - name: Create tar of portainer contents
         run: |
           tar -cvf portainer.tar -C portainer .
 
-      - name: List files to confirm
-        run: ls -lh
+      - name: Commit and push tarball
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git add portainer.tar
+          git commit -m "Auto-generated portainer.tar"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
