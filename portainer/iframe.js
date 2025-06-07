@@ -1,14 +1,12 @@
 // iframe.js
 window.onload = function () {
     var iframe = document.getElementById("my-iframe");
+    // Get the hostname of the current (parent) window
+    var parentHostname = window.location.hostname; // Get IP Address or Hostname
 
-    cockpit.spawn(["hostname", "-I"]).stream(function (data) {
-        var hostIP = data.trim().split(' ')[0]; // Extract the first IP address
-        var url = "https://" + hostIP + ":9443/";
+    var portainerUrl = "https://" + parentHostname + ":9443/";
 
-
-        iframe.src = url;
-    });
+    iframe.src = portainerUrl;
 };
 
 function openSource() {
