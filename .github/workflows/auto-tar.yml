@@ -18,7 +18,6 @@ jobs:
       - name: Create tar of portainer contents
         run: |
           tar -cvf portainer.tar -C portainer .
-          mv portainer.tar ./  # Ensure it's placed in root
 
       - name: List files to confirm
         run: ls -lh
