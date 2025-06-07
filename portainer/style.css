@@ -4,36 +4,55 @@ html, body {
     height: 100%;
     width: 100%;
     overflow: hidden;
+    background-color: transparent;
+    font-family: sans-serif;
 }
 
+/* Fullscreen iframe with no border or margin */
 iframe {
-    width: 100%;
-    position: absolute;
-    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
     border: none;
-    overflow: hidden;
-    top: 0;
-    top: 0;
+    background: transparent;
+    z-index: 2;
 }
 
-/* Style the button with an icon */
+/* Error message behind iframe — visible only on failure */
+#error-message {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #1e1e1e; /* Match Cockpit dark mode */
+    color: #a00;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2em;
+    z-index: 1;
+}
+
+/* Top-right "Open in new tab" button */
 #view-source-btn {
     position: absolute;
     top: 10px;
     right: 15px;
-    background-color: transparent;
-    border-radius: 5px;
-    border: none;
     padding: 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: transparent;
     cursor: pointer;
-    z-index: 1; /* Set a higher z-index value */
-
+    z-index: 3;
 }
 
-/* Add icon styles (you can replace the content property with your own icon) */
+/* Icon for the button (↱) */
 #view-source-btn::before {
-    content: "\21F1";
-    /* Globe icon Unicode character */
+    content: "\21F1"; /* ↱ */
     font-size: 20px;
     color: grey;
 }
